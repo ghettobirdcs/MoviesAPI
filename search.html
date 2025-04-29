@@ -23,7 +23,18 @@
 				<li><a href="#" class="nav__link link__hover-effect link__hover-effect--white">Find movies</a></li>
 				<li><a href="#" class="nav__link nav__link--primary">CONTACT</a></li>
 			</ul>
+
+			<div id="phone-nav" class="phone-nav--searchpage">
+				<div class="phone-nav__open" onclick="toggleModal()"><i class="fa-solid fa-bars"></i></div>
+				<div class="phone-nav__menu">
+					<a href="./index.html" class="phone-nav__link"><span class="purple">Home</span></a>
+					<a href="./search.html" class="phone-nav__link"><span class="purple">Find Your Movie</span></a>
+					<a href="#" class="phone-nav__link"><span class="purple">Contact</span></a>
+				</div>
+				<div class="phone-nav__close" onclick="toggleModal()"><i class="fa-solid fa-xmark"></i></div>
+			</div>
 		</nav>
+
 		<div class="search__container">
 			<h1 class="search__title">Browse our movies</h1>
 			<div class="input-wrapper">

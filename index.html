@@ -23,6 +23,16 @@
 				<li><a href="./search.html" class="nav__link link__hover-effect link__hover-effect--black">Find movies</a></li>
 				<li><a href="#" class="nav__link nav__link--primary">CONTACT</a></li>
 			</ul>
+
+			<div id="phone-nav">
+				<div class="phone-nav__open" onclick="toggleModal()"><i class="fa-solid fa-bars"></i></div>
+				<div class="phone-nav__menu">
+					<a href="./index.html" class="phone-nav__link"><span class="purple">Home</span></a>
+					<a href="./search.html" class="phone-nav__link"><span class="purple">Find Your Movie</span></a>
+					<a href="#" class="phone-nav__link"><span class="purple">Contact</span></a>
+				</div>
+				<div class="phone-nav__close" onclick="toggleModal()"><i class="fa-solid fa-xmark"></i></div>
+			</div>
 		</nav>
 	</header>
 
@@ -35,7 +45,9 @@
 				<button class="search-btn not-loading" onclick="searchMovies()"><i class="fa-solid fa-magnifying-glass"></i></button>
 			</div>
 		</div>
-		<img src="./assets/building.681ea6bf.png" alt="" class="landing__img">
+		<div class="img__wrapper">
+			<img src="./assets/building.681ea6bf.png" alt="" class="landing__img">
+		</div>
 	</section>
 
 </body>

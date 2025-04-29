@@ -8,6 +8,10 @@
 	font-family: "Open Sans", sans-serif;
 }
 
+body {
+	overflow-x: hidden;
+}
+
 li {
 	list-style-type: none;
 }
@@ -240,9 +244,14 @@ section {
 	background-color: #000;
 }
 
-.landing__img {
+.img__wrapper {
 	position: absolute;
 	bottom: 0;
+	width: max-content;
+}
+
+.landing__img {
+	width: 100%;
 	height: 50vh;
 }
 
@@ -453,5 +462,147 @@ section {
 	}
 	100% {
 		transform: rotate(360deg)
+	}
+}
+
+/*
+ *
+ * Responsiveness
+ *
+*/
+
+#phone-nav {
+	display: none;
+}
+
+.phone-nav--searchpage .phone-nav__open {
+	color: #fff;
+}
+
+.phone-nav__open,
+.phone-nav__close {
+	font-size: 28px;
+	color: #6030b1;
+	cursor: pointer;
+}
+
+.phone-nav__close {
+	display: none;
+}
+
+.phone-nav__menu {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	justify-content: center;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: hsla(0, 0%, 100%, .95);
+	visibility: hidden;
+	opacity: 0;
+	transform: translateX(100vw);
+	transition: all 300ms ease;
+}
+
+.phone-nav__link {
+	font-size: 30px;
+	margin-bottom: 60px;
+}
+
+.open .phone-nav__menu {
+	z-index: 1;
+	visibility: visible;
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.closed .phone-nav__menu {
+	visibility: visible;
+	opacity: 0;
+	transform: translateX(100vw);
+	z-index: -1;
+}
+
+.open .phone-nav__open {
+	display: none;
+}
+
+.open .phone-nav__close {
+	display: flex;
+	z-index: 1;
+}
+
+@media (max-width: 768px) {
+	.landing__title {
+		font-size: 40px;
+	}
+
+	.searchbar {
+		font-size: 20px;
+	}
+
+	.nav__links {
+		display: none;
+	}
+
+	#phone-nav {
+		display: flex;
+	}
+
+	.input-wrapper {
+		width: 90%;
+	}
+
+	.movie__container {
+		width: 50%;
+	}
+
+	.search__title {
+		width: 100%;
+		text-align: left;
+		padding-left: 64px;
+		margin-bottom: 30px;
+		font-size: 24px;
+	}
+
+	.searchpage__header {
+		height: 290px;
+	}
+}
+
+@media (max-width: 550px) {
+	.img__wrapper {
+		display: none;
+	}
+
+	.landing__title,
+	.landing__sub-title {
+		text-align: left;
+	}
+
+	.input-wrapper {
+		flex-direction: column;
+	}
+
+	.searchbar {
+		margin-top: 42px;
+		height: 60px;
+	}
+
+	.searchbar--searchpage {
+		margin: 0;
+	}
+
+	.search-btn,
+	.search-btn.loading {
+		margin: 0;
+		margin-top: 20px;
+		width: 100%;
+		height: 60px;
 	}
 }

@@ -1,5 +1,18 @@
 const moviesWrapper = document.querySelector('.movies')
 
+function toggleModal() {
+	const phoneNav = document.getElementById('phone-nav')
+
+    if (phoneNav.classList.contains('open')) {
+		phoneNav.classList.remove('open')
+		phoneNav.classList.add('closed')
+	}
+    else {
+		phoneNav.classList.remove('closed')
+		phoneNav.classList.add('open')
+	}
+}
+
 function searchMovies() {
 	const button = document.querySelector('.search-btn')
 	button.classList.remove('not-loading')
