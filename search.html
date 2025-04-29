@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Car Sales</title>
+	<link rel="stylesheet" href="./styles.css">
+	<script
+	src="https://kit.fontawesome.com/eb2fc51413.js"
+	crossorigin="anonymous"
+	></script>
+	<script src="./script.js" defer></script>
+</head>
+<body>
+	<header class="searchpage__header">
+		<nav class="nav__container">
+			<div class="nav__logo--wrapper">
+				<img class="nav__logo" src="./assets/whitelogo.39850b27.png" alt="blinker logo" class="logo">
+			</div>
+
+			<ul class="nav__links">
+				<li><a href="./index.html" class="nav__link link__hover-effect link__hover-effect--white">Home</a></li>
+				<li><a href="#" class="nav__link link__hover-effect link__hover-effect--white">Find movies</a></li>
+				<li><a href="#" class="nav__link nav__link--primary">CONTACT</a></li>
+			</ul>
+		</nav>
+		<div class="search__container">
+			<h1 class="search__title">Browse our movies</h1>
+			<div class="input-wrapper">
+				<input type="text" class="searchbar searchbar--searchpage" onchange="onSearchChange(event)" placeholder="Search by ...">
+				<div class="search-btn--searchpage" onclick="onSearchChange(event)"><i class="fa-solid fa-magnifying-glass"></i></div>
+			</div>
+		</div>
+		<div class="overlay"></div>
+	</header>
+
+	<section id="results">
+		<div class="results__container">
+			<h2 class="results__text">Search results:</h2>
+			<select id="filter" onchange="filterMovies(event)">
+				<option value="RELEVANT" selected>Relevant</option>
+				<option value="ALPHABETICAL">Alphabetical</option>
+				<option value="NEW_TO_OLD">Newest</option>
+				<option value="OLD_TO_NEW">Oldest</option>
+			</select>
+		</div>
+		<div class="movies">
+			<i class="fa-solid fa-spinner movies__loading--spinner"></i>
+		</div>
+	</section>
+</body>
