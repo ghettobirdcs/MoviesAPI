@@ -1,14 +1,30 @@
 const moviesWrapper = document.querySelector('.movies')
 
+function searchMovies() {
+	const button = document.querySelector('.search-btn')
+	button.classList.remove('not-loading')
+	button.classList.add('loading')
+	button.innerHTML = `<i class="fa-solid fa-spinner fa-spinner--homepage">`
+
+	setTimeout(() => {
+		window.location.href = './search.html'
+		// Setting value of the search term to whatever the user typed in the searchbar on the homepage
+		localStorage.setItem('id', document.querySelector('.searchbar').value)
+	}, 500)
+}
+
 async function getMovies() {
+	if (!localStorage.getItem('id')) {
+		moviesWrapper.innerHTML = `<h1 class='start-searching'>Start searching!</h1>`
+		return null
+	}
+	
 	const id = localStorage.getItem('id')
 	const response = await fetch(`http://www.omdbapi.com/?apikey=9c8a3160&s=${id}`)
 	const data = await response.json()
 	return data
 }
 
-// TODO: Display waiting page before the user has made a search (i.e. when local storage is empty)
-// TODO: Add placeholder poster for 404 image sources
 async function onSearchChange(event) {
 	// We need to make sure the spinner stays during the loading state
 	moviesWrapper.innerHTML = "<i class='fa-solid fa-spinner movies__loading--spinner'></i>"
@@ -28,8 +44,19 @@ async function onSearchChange(event) {
 	}, 1000)
 }
 
-async function renderMovies(filter, id) {
+async function renderMovies(filter) {
 	const movies = await getMovies()
+
+    // Check if there are any search results
+    if (!movies["Search"] || movies["Search"].length === 0) {
+        moviesWrapper.innerHTML = `
+            <div class="no-results">
+                <h2>No results found</h2>
+                <p>Try searching for a different title.</p>
+            </div>
+        `
+        return
+    }
 
 	// Variable to store filtered movie arrays
 	let filtered_movies = {}
@@ -43,7 +70,7 @@ async function renderMovies(filter, id) {
 	else if (filter === 'OLD_TO_NEW') {
 		filtered_movies = movies["Search"].sort((a, b) => a.Year.localeCompare(b.Year))
 	}
-	else {
+	else { // filter = 'RELEVANT'
 		filtered_movies = movies["Search"]
 	}
 
@@ -56,7 +83,7 @@ function movieHTML(movie) {
 	return (
 		`<div class="movie__container">
 			<div class="movie__poster--wrapper">
-			  <img class="movie__poster" src="${movie.Poster}">
+			  <img class="movie__poster" src="${movie.Poster}" onerror="this.onerror=null;this.src='./assets/placeholder.png';">
 			</div>
 			<div class="movie__title">
 			  ${movie.Title}

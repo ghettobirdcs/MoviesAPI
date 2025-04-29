@@ -1,3 +1,5 @@
+/* TODO: Add responsiveness */
+
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 * {
 	margin: 0;
@@ -221,6 +223,23 @@ section {
 	border-color: #ff328f;
 }
 
+.search-btn.loading {
+	border: none;
+	background-color: #0a1f44;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.fa-spinner--homepage {
+	color: #fff !important;
+	font-size: 32px !important;
+}
+
+.search-btn.loading:hover {
+	background-color: #000;
+}
+
 .landing__img {
 	position: absolute;
 	bottom: 0;
@@ -346,6 +365,17 @@ section {
 	padding: 40px 20px;
 	max-width: 1200px;
 	margin: 0 auto;
+}
+
+.start-searching,
+.no-results {
+	text-align: center;
+	line-height: 2em;
+	color: rgba(0, 0, 0, 0.5);
+	font-weight: 500;
+	font-size: 20px;
+	letter-spacing: 0.1em;
+	padding-top: 40px;
 }
 
 .results__container {
