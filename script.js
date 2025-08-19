@@ -33,7 +33,7 @@ async function getMovies() {
 	}
 	
 	const id = localStorage.getItem('id')
-	const response = await fetch(`http://www.omdbapi.com/?apikey=9c8a3160&s=${id}`)
+	const response = await fetch(`https://www.omdbapi.com/?apikey=9c8a3160&s=${id}`)
 	const data = await response.json()
 	return data
 }
